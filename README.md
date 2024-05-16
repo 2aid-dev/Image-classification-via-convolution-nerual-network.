@@ -222,3 +222,14 @@ writer.close()
 ```
 
 This way, you will be able to systematically and cumulatively improve your model's performance based on continuous monitoring and analysis.
+
+
+
+
+---
+
+
+
+
+this link is a project on ***google colab***:
+https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing
