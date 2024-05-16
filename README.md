@@ -38,8 +38,7 @@ In this experiment, we aim to classify images using a Convolutional Neural Netwo
 
 By following these steps, the experiment aims to achieve high accuracy in image classification tasks using CNNs.
 
-*** ***
----
+# ***
 
 
 # Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
