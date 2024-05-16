@@ -8,21 +8,21 @@ https://github.com/WhynotChen0105/Experiment-1/tree/main
 <details>
   <summary> <b> Description of the experiment </b> </summary>
   
-  In this experiment, we aim to classify images using a Convolutional Neural Network (CNN). The steps involved in this experiment are as follows:
-
-  #### 1. Data Preparation
-  - **Dataset Collection**: Gather a labeled dataset of images. Common datasets include CIFAR-10, MNIST, or a custom dataset.
-  - **Data Preprocessing**: Normalize the images, resize them to a consistent size, and split the dataset into training, validation, and test sets.
-
-  #### 2. Model Design
-  - **Architecture Selection**: Choose an appropriate CNN architecture. For example, you can start with a simple model or use pre-trained models like ResNet50, VGG16, or MobileNet.
-  - **Layer Configuration**: Configure the layers of the CNN, including convolutional layers, pooling layers, dropout layers, and fully connected layers.
-
-  #### 3. Training the Model
-  - **Loss Function**: Select a suitable loss function such as categorical cross-entropy for multi-class classification.
-  - **Optimizer**: Choose an optimizer like Adam, SGD, or RMSprop to minimize the loss function.
-  - **Data Augmentation**: Apply data augmentation techniques such as rotation, flipping, and zooming to increase the variability of the training data.
-  - **Training Process**: Train the CNN on the training dataset, monitor the performance on the validation set, and adjust hyperparameters as needed.
+    In this experiment, we aim to classify images using a Convolutional Neural Network (CNN). The steps involved in this experiment are as follows:
+  
+    #### 1. Data Preparation
+    - **Dataset Collection**: Gather a labeled dataset of images. Common datasets include CIFAR-10, MNIST, or a custom dataset.
+    - **Data Preprocessing**: Normalize the images, resize them to a consistent size, and split the dataset into training, validation, and test sets.
+  
+    #### 2. Model Design
+    - **Architecture Selection**: Choose an appropriate CNN architecture. For example, you can start with a simple model or use pre-trained models like ResNet50, VGG16, or MobileNet.
+    - **Layer Configuration**: Configure the layers of the CNN, including convolutional layers, pooling layers, dropout layers, and fully connected layers.
+  
+    #### 3. Training the Model
+    - **Loss Function**: Select a suitable loss function such as categorical cross-entropy for multi-class classification.
+    - **Optimizer**: Choose an optimizer like Adam, SGD, or RMSprop to minimize the loss function.
+    - **Data Augmentation**: Apply data augmentation techniques such as rotation, flipping, and zooming to increase the variability of the training data.
+    - **Training Process**: Train the CNN on the training dataset, monitor the performance on the validation set, and adjust hyperparameters as needed.
 
   #### 4. Model Evaluation
   - **Performance Metrics**: Evaluate the model using metrics such as accuracy, precision, recall, and F1-score on the test dataset.
