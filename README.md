@@ -3,8 +3,9 @@
 ## This repository is an optimization of the following repository: 👇🏼
 https://github.com/WhynotChen0105/Experiment-1/tree/main
 
-## Image Classification via Convolutional Neural Network
+-----
 
+### This is a brief description of the experience:
 In this experiment, we aim to classify images using a Convolutional Neural Network (CNN). The steps involved in this experiment are as follows:
 
 ### 1. Data Preparation
