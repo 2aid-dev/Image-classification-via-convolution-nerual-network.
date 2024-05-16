@@ -1,8 +1,6 @@
 # Image-classification-via-convolution-nerual-network.
-Image classification via convolution nerual network.
 
-
-# This repository is an optimization of the following repository 
+## This repository is an optimization of the following repository: 👇🏼
 https://github.com/WhynotChen0105/Experiment-1/tree/main
 
 ## Image Classification via Convolutional Neural Network
@@ -39,4 +37,5 @@ In this experiment, we aim to classify images using a Convolutional Neural Netwo
 
 By following these steps, the experiment aims to achieve high accuracy in image classification tasks using CNNs.
 
+***
 ---
