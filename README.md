@@ -8,7 +8,7 @@ https://github.com/WhynotChen0105/Experiment-1/tree/main
 ### This is a brief description of the experience:
 In this experiment, we aim to classify images using a Convolutional Neural Network (CNN). The steps involved in this experiment are as follows:
 
-### 1. Data Preparation
+#### 1. Data Preparation
 - **Dataset Collection**: Gather a labeled dataset of images. Common datasets include CIFAR-10, MNIST, or a custom dataset.
 - **Data Preprocessing**: Normalize the images, resize them to a consistent size, and split the dataset into training, validation, and test sets.
 
