@@ -6,7 +6,7 @@ https://github.com/WhynotChen0105/Experiment-1/tree/main
 -----
 
 <details>
-  <summary>This is a brief description of the experience:</summary>
+  <summary> <b> Description of the experiment </b> </summary>
   
   In this experiment, we aim to classify images using a Convolutional Neural Network (CNN). The steps involved in this experiment are as follows:
 
