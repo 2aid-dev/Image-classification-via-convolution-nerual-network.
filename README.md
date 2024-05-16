@@ -5,9 +5,6 @@ https://github.com/WhynotChen0105/Experiment-1/tree/main
 
 -----
 
-Here is how you can format this text to be inside a toggle in a `README.md` file using Markdown:
-
-```markdown
 <details>
   <summary>This is a brief description of the experience:</summary>
   
@@ -43,9 +40,6 @@ Here is how you can format this text to be inside a toggle in a `README.md` file
 
   By following these steps, the experiment aims to achieve high accuracy in image classification tasks using CNNs.
 </details>
-```
-
-This will create a collapsible section in your `README.md` file with the provided description.
 
 
 ***
