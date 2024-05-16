@@ -1,6 +1,6 @@
 # Image-classification-via-convolution-nerual-network.
 
-## This repository is an optimization of the following repository: 👇🏼
+## Here are ways to optimize the following experience: 👇🏼
 https://github.com/WhynotChen0105/Experiment-1/tree/main
 
 -----
