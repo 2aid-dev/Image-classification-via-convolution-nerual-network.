@@ -42,7 +42,7 @@ By following these steps, the experiment aims to achieve high accuracy in image 
 ---
 
 
-Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
+# Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
 
 ### 1. **Improving Training Data**
 
