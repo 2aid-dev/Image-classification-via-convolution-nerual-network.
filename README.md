@@ -42,18 +42,7 @@
 
 ---
 
-
-
-
-
-
-
-
-
-
-## Project Description
-This project aims to improve image classification accuracy using Convolutional Neural Networks. After conducting the experiment and obtaining the results, improvements will be applied to meet the ***homework*** assignment requirements.
-
+***This project aims to improve image classification accuracy using Convolutional Neural Networks. After conducting the experiment and obtaining the results, improvements will be applied to meet the ***homework*** assignment requirements***.
 
 After downloading and installing the trial environment requirements.
 <br />
@@ -65,19 +54,10 @@ After downloading and installing the trial environment requirements.
 
 <img src="https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/2c21cbdf-c608-4fa2-b09d-275ec5d4caaa" alt="drawing" width="100%" height="600"/>
 
-
 ----- 
 
 
-
-
-
-# So let's do the homework.
-
-## Here are ways to optimize the following experience: 👇🏼
-https://github.com/WhynotChen0105/Experiment-1/tree/main
-
------
+## So let's do the homework.
 
 <details>
   <summary> <b> Description of the experiment </b> </summary>
