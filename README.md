@@ -1,5 +1,9 @@
 # Image-classification-via-convolution-nerual-network.
 
+
+![image](https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/2c21cbdf-c608-4fa2-b09d-275ec5d4caaa)
+
+
 ## Here are ways to optimize the following experience: 👇🏼
 https://github.com/WhynotChen0105/Experiment-1/tree/main
 
