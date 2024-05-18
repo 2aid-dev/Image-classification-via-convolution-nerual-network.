@@ -73,16 +73,14 @@ Certainly! Let's go through the entire new code and compare it with the original
 ### Detailed Explanation of Steps and Improvements
 
 1. **Setting Random Seed**:
-   - Did not set a random seed for reproducibility.
-     
+   
      ```python
      torch.manual_seed(42)
      ```
 
 3. **Transformations and Data Augmentation**:
-   - **Original Code**: Basic transformations without data augmentation.
-   
-   - **Improved Code**: Added advanced data augmentation techniques for better generalization.
+   - Added advanced data augmentation techniques for better generalization.
+
      ```python
      train_transform = transforms.Compose([
          transforms.RandomResizedCrop(224),
@@ -99,44 +97,43 @@ Certainly! Let's go through the entire new code and compare it with the original
      ])
      ```
 
-4. **Batch Size Adjustment**:
-   - **Original Code**: Batch size set to 128.
-   - **Improved Code**: Reduced batch size to 64 to potentially improve model convergence and handle data augmentation.
+5. **Batch Size Adjustment**:
+   - In Original Code Batch size is set to 128.
+   - Reduced batch size to 64 to potentially improve model convergence and handle data augmentation.
+  
      ```python
      train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True, drop_last=True)
      test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
      ```
 
-5. **Using Pre-trained Model with Fine-Tuning**:
-   - **Original Code**: Loaded the pre-trained ResNet-18 without specifying custom output classes.
-   - **Improved Code**: Modified the final layer to match the number of output classes (102).
+7. **Using Pre-trained Model with Fine-Tuning**:
+   - Modified the final layer to match the number of output classes (102).
+
      ```python
      model = resnet18(pretrained=True)
      num_ftrs = model.fc.in_features
      model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
      ```
 
-6. **Optimizer and Learning Rate Scheduler**:
-   - **Original Code**: Used SGD optimizer without a learning rate scheduler.
-    
-   - **Improved Code**: Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
+9. **Optimizer and Learning Rate Scheduler**:
+    - Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
+ 
      ```python
      optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
      scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
      ```
 
-7. **Device Handling (GPU/CPU)**:
-   - **Original Code**: Did not specify device usage.
-   - **Improved Code**: Added device handling to utilize GPU if available.
+11. **Device Handling (GPU/CPU)**:
+    - Added device handling to utilize GPU if available.
+ 
      ```python
      device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
      model = model.to(device)
      ```
 
-8. **Training and Testing Functions**:
-   - **Original Code**: Basic implementation without device handling or accuracy calculation.
-     
-   - **Improved Code**: Enhanced with device handling, accuracy calculation, and logging.
+11. **Training and Testing Functions**:
+    - Enhanced with device handling, accuracy calculation, and logging.
+
      ```python
      def train():
          model.train()
@@ -164,7 +161,7 @@ Certainly! Let's go through the entire new code and compare it with the original
          total = 0
          with torch.no_grad():
              for inputs, labels in test_dataloader:
-                 inputs, labels = inputs.to(device), labels.to(device)  # Move data to device (GPU/CPU)
+                 inputs, labels = inputs.to(device), labels.to(device)  # Move data to the device (GPU/CPU)
                  outputs = model(inputs)
                  _, predicted = outputs.max(1)
                  total += labels.size(0)
@@ -173,46 +170,45 @@ Certainly! Let's go through the entire new code and compare it with the original
          return correct / total
      ```
 
-9. **Main Function with Early Stopping and Progress Logging**:
-   _ **Original Code**: Basic loop for 15 epochs without early stopping or progress logging.
-   _ **Improved Code**: Added early stopping, progress logging, and accuracy threshold check.
+11. **Main Function with Early Stopping and Progress Logging**:
+    - Prints patches when they exceed 75 percent.
+    - Calculate the duration time for each training and testing process
+
      ```python
      def main():
-         best_acc = 0.0
-         epochs_without_improvement = 0
-         max_epochs_without_improvement = 10
-         epoch = 0
-         accuracy_threshold = 0.75  # Step 1: Define the accuracy threshold
+        best_acc = 0.0
+        epochs_without_improvement = 0
+        max_epochs_without_improvement = 10
+        epoch = 0
+        accuracy_threshold = 0.75
+        while True:
+            start_time = time.time()
+            train_loss, train_acc = train()
+            test_acc = test()
+            end_time = time.time()
+            epoch_duration = end_time - start_time
+    
+            print(f"Epoch [{epoch+1}], Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f}, Test Acc: {test_acc:.4f}, Time: {epoch_duration:.2f}s")
+            scheduler.step()
+    
+            if test_acc > best_acc:
+                torch.save(model.state_dict(), 'best_model.pth')
+                best_acc = test_acc
+                epochs_without_improvement = 0
+            else:
+                epochs_without_improvement += 1
+    
+            # Check if accuracy exceeds the threshold, and print Accuracy id >= 75%
+            if test_acc >= accuracy_threshold:
+                print(f"Accuracy exceeds {test_acc * 100}%!")
+    
+            if epochs_without_improvement >= max_epochs_without_improvement:
+                print("Early stopping due to no improvement in validation accuracy")
+                break
+
+        if __name__ == '__main__':
+            main()
      
-         while True:
-             start_time = time.time()
-             train_loss, train_acc = train()
-             test_acc = test()
-             end_time = time.time()
-             epoch_duration = end_time - start_time
-             print(f"Epoch [{epoch+1}], Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f}, Test Acc: {test_acc:.4f}, Time: {epoch_duration:.2f}s")
-             scheduler.step()
-     
-             if test_acc > best_acc:
-                 torch.save(model.state_dict(), 'best_model.pth')
-                 best_acc = test_acc
-                 epochs_without_improvement = 0
-             else:
-                 epochs_without_improvement += 1
-     
-             # Check if accuracy exceeds the threshold
-             if test_acc >= accuracy_threshold:
-                 print(f"Accuracy exceeds {accuracy_threshold * 100}%!")
-                 break
-     
-             if epochs_without_improvement >= max_epochs_without_improvement:
-                 print("Early stopping due to no improvement in validation accuracy")
-                 break
-     
-             epoch += 1
-     
-     if __name__ == '__main__':
-         main()
      ```
 
 ### Summary of Improvements:
