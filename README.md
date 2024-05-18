@@ -208,8 +208,8 @@ The image shows results before the Improve
 ## Results:
 - The model training stops early if the validation accuracy does not improve for a specified number of epochs.
 - The best model is saved as best_model.pth when the validation accuracy improves.
-
-![image](https://github.com/2aid-dev/Improving-Accuracy-in-Image-classification-via-convolution-nerual-network-Experiment1/assets/42585484/ebf7fe98-26dd-4233-8cd9-cba7da7488db)
+  
+![image](https://github.com/2aid-dev/Improving-Accuracy-in-Image-classification-via-convolution-nerual-network-Experiment1/assets/42585484/fdf37088-ad81-4f7f-9014-e9d6fc286670)
 The image shows results after the Improve
 
 ---
