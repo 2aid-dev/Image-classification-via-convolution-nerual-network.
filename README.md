@@ -213,13 +213,7 @@ The best model is saved as best_model.pth when the validation accuracy improves.
 
 The image shows results after the Improve
 
-
 ---
-
-I am attaching both the old and new version of the code:
-<p><sub> <a href="src/AI_Class_After_Improving_Accuracy_(Experiment_1).ipynb"> AI_Class_After_Improving_Accuracy_(Experiment_1).ipynb </a>.</sub></p>
-
-[AI_Class_After_Improving_Accuracy_(Experiment_1)](src/AI_Class_After_Improving_Accuracy_(Experiment_1))
 
 ## Google Colab Project Links
 [Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
