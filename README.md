@@ -78,7 +78,7 @@ Certainly! Let's go through the entire new code and compare it with the original
      torch.manual_seed(42)
      ```
 
-3. **Transformations and Data Augmentation**:
+2. **Transformations and Data Augmentation**:
    - Added advanced data augmentation techniques for better generalization.
 
      ```python
@@ -97,20 +97,16 @@ Certainly! Let's go through the entire new code and compare it with the original
      ])
      ```
 
-5. **Batch Size Adjustment**:
+3. **Batch Size Adjustment**:
    - In Original Code Batch size is set to 128.
-   - 
    - Reduced batch size to 64 to improve model convergence and handle data augmentation.
-
-   <br />
-      <br />
 
      ```python
      train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True, drop_last=True)
      test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
      ```
 
-7. **Using Pre-trained Model with Fine-Tuning**:
+4. **Using Pre-trained Model with Fine-Tuning**:
    - Modified the final layer to match the number of output classes (102).
 
      ```python
@@ -119,7 +115,7 @@ Certainly! Let's go through the entire new code and compare it with the original
      model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
      ```
 
-9. **Optimizer and Learning Rate Scheduler**:
+5. **Optimizer and Learning Rate Scheduler**:
     - Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
  
      ```python
@@ -127,7 +123,7 @@ Certainly! Let's go through the entire new code and compare it with the original
      scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
      ```
 
-11. **Device Handling (GPU/CPU)**:
+6. **Device Handling (GPU/CPU)**:
     - Added device handling to utilize GPU if available.
  
      ```python
@@ -135,7 +131,7 @@ Certainly! Let's go through the entire new code and compare it with the original
      model = model.to(device)
      ```
 
-11. **Training and Testing Functions**:
+7. **Training and Testing Functions**:
     - Enhanced with device handling, accuracy calculation, and logging.
 
      ```python
@@ -174,7 +170,7 @@ Certainly! Let's go through the entire new code and compare it with the original
          return correct / total
      ```
 
-11. **Main Function with Early Stopping and Progress Logging**:
+8. **Main Function with Early Stopping and Progress Logging**:
     - Prints patches when they exceed 75 percent.
     - Calculate the duration time for each training and testing process
 
@@ -216,14 +212,14 @@ Certainly! Let's go through the entire new code and compare it with the original
      ```
 
 ### Summary of Improvements:
-1. **Setting a Random Seed**: Ensures reproducibility of results.
-2. **Data Augmentation**: Enhances training with diverse transformations, improving model generalization.
-3. **Batch Size Adjustment**: Optimizes training and handles data augmentation better.
-4. **Pre-trained Model Fine-Tuning**: Adjusts the final layer to match the specific number of classes (102).
-5. **Optimizer and Learning Rate Scheduler**: Uses Adam optimizer for better performance and introduces a learning rate scheduler.
-6. **Device Handling**: Utilizes GPU for faster computation if available.
-7. **Enhanced Training and Testing Functions**: Includes device handling, accuracy calculation, and logging.
-8. **Main Function Enhancements**: Introduces early stopping, progress logging, and an accuracy threshold check.
+  1. **Setting a Random Seed**: Ensures reproducibility of results.
+  2. **Data Augmentation**: Enhances training with diverse transformations, improving model generalization.
+  3. **Batch Size Adjustment**: Optimizes training and handles data augmentation better.
+  4. **Pre-trained Model Fine-Tuning**: Adjusts the final layer to match the specific number of classes (102).
+  5. **Optimizer and Learning Rate Scheduler**: Uses Adam optimizer for better performance and introduces a learning rate scheduler.
+  6. **Device Handling**: Utilizes GPU for faster computation if available.
+  7. **Enhanced Training and Testing Functions**: Includes device handling, accuracy calculation, and logging.
+  8. **Main Function Enhancements**: Introduces early stopping, progress logging, and an accuracy threshold check.
 
 These changes improve the training process, model performance, and provide better insights during model training and evaluation.
 
