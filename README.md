@@ -204,9 +204,20 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ---
 
-## ***Results***:
-- The model training stops early if the validation accuracy does not improve for a specified number of epochs..
-- The best model is saved as best_model.pth when the validation accuracy improves..
+
+After downloading and installing the trial environment requirements.
+<br />
+***The model will***:
+- A dataset of images is loaded and transformations are applied to it.
+- A ResNet-18 model is built and loaded.
+- The loss function and optimizer are defined.
+- The model is trained and tested over multiple epochs, and the best-performing model is saved based on accuracy.
+
+
+
+## *** Results ***:
+- The model training stops early if the validation accuracy does not improve for a specified number of epochs.
+- The best model is saved as best_model.pth when the validation accuracy improves.
 
 
 ## Google Colab Project Links
