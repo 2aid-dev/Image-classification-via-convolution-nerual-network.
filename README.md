@@ -174,8 +174,8 @@ writer.close()
 ### Detailed Explanation of Steps and Improvements
 
 1. **Setting Random Seed**:
-   - **Original Code**: Did not set a random seed for reproducibility.
-   - **Improved Code**:
+    **Original Code**: Did not set a random seed for reproducibility.
+    **Improved Code**:
      ```python
      torch.manual_seed(42)
      ```
