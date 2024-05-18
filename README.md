@@ -158,9 +158,9 @@ writer.close()
 
 ## Results:
 ![image](https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/64970023-5e44-4fa4-83a9-dd3fe5b9261a)
-### After 15 times of training the model and testing it, we did not get the desired result.
-So let's increase the number of times we train and test
+### After 15 times of training the model and testing it, we did not get the desired result. So let's increase the number of times we train and test
 
+---
 
 
 ## Google Colab Project Links
