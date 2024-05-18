@@ -67,14 +67,14 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ### Detailed Explanation of Steps and Improvements
 
-1. **Setting Random Seed**:
+### **Setting Random Seed**:
    
      ```python
      torch.manual_seed(42)
      ```
 
-2. **Transformations and Data Augmentation**:
-   Added advanced data augmentation techniques for better generalization.
+### **Transformations and Data Augmentation**:
+- Added advanced data augmentation techniques for better generalization.
 
      ```python
      train_transform = transforms.Compose([
@@ -92,7 +92,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      ])
      ```
 
-3. **Batch Size Adjustment**:
+### **Batch Size Adjustment**:
 - In Original Code Batch size is set to 128.
 - Reduced batch size to 64 to improve model convergence and handle data augmentation.
 
@@ -110,24 +110,24 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
      ```
 
-5. **Optimizer and Learning Rate Scheduler**:
-    - Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
+### **Optimizer and Learning Rate Scheduler**:
+- Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
  
      ```python
      optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
      scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
      ```
 
-6. **Device Handling (GPU/CPU)**:
-    - Added device handling to utilize GPU if available.
+### **Device Handling (GPU/CPU)**:
+- Added device handling to utilize GPU if available.
  
      ```python
      device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
      model = model.to(device)
      ```
 
-7. **Training and Testing Functions**:
-    - Enhanced with device handling, accuracy calculation, and logging.
+### **Training and Testing Functions**:
+- Enhanced with device handling, accuracy calculation, and logging.
 
      ```python
      def train():
@@ -165,7 +165,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
          return correct / total
      ```
 
-8. **Main Function with Early Stopping and Progress Logging**:
+### **Main Function with Early Stopping and Progress Logging**:
 - Prints patches when they exceed 75 percent.
 - Calculate the duration time for each training and testing process
 
