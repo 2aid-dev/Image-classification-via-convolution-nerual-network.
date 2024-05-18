@@ -67,208 +67,8 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ### Detailed Explanation of Steps and Improvements
 
+
 Certainly! Let's go through the entire new code and compare it with the original code, explaining the improvements and steps taken.
-
-### Original Code
-
-```python
-import torch
-import torchvision
-from torch.utils.data import DataLoader
-
-# Build the transform for the train dataset and test dataset.
-train_transform = torchvision.transforms.Compose(
-    [torchvision.transforms.Resize([224, 224]),
-     torchvision.transforms.ToTensor()])
-
-test_transform = torchvision.transforms.Compose(
-    [torchvision.transforms.Resize([224, 224]), torchvision.transforms.ToTensor()])
-
-# Build the train dataset and test dataset
-train_dataset = torchvision.datasets.Flowers102(root='./dataset', split='train', transform=train_transform,
-                                                download=True)
-test_dataset = torchvision.datasets.Flowers102(root='./dataset', split='val', transform=test_transform,
-                                               download=True)
-
-# Build the train dataloader and test dataloader use the two datasets.
-train_dataloader = DataLoader(train_dataset, batch_size=128, shuffle=True, drop_last=True)
-test_dataloader = DataLoader(test_dataset, batch_size=128, shuffle=True, drop_last=True)
-
-# Build the Convolution Neural Network
-# But we can build the resnet18 easily by the torchvision:
-model = torchvision.models.resnet18(torchvision.models.ResNet18_Weights)
-
-# Build the loss function and optimizer
-# For the Image Classification task, we use the cross-entropy loss function as the loss function and use the SGD(Stochastic Gradient Descent) as the optimizer.
-
-loss_function = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(model.parameters(), lr=0.005, momentum=0.9)
-
-# Train the model
-def train():
-    all_loss = 0.0
-    n = 0
-    for data in train_dataloader:
-        n = n + 1
-        optimizer.zero_grad()  # Set 0 into grads of optimizer
-        image, target = data  # Fetch the data and target
-        output = model(image)  # Forward
-        loss = loss_function(output, target)  # Calculate the loss
-        loss.backward()  # Backward
-        optimizer.step()  # Optimizer works
-        all_loss += loss.item()
-        print('Train process: %.3f of this epoch, loss : %.2f ' % (n / len(train_dataloader), loss.item()))
-    return all_loss / len(train_dataloader)  # return the loss
-
-# Test the model
-def test():
-    model.eval()  # set the model into the evaluation mode, stopping Backward.
-    all_acc = 0.0
-    n = 0
-    for data in test_dataloader:
-        n = n + 1
-        image, target = data  # Fetch the data
-        output = model(image)  # Forward
-        print('Test process: %.2f of this epoch' % (n / len(test_dataloader)))
-        all_acc += torch.eq(torch.argmax(output, dim=-1), target).float().mean()  # Partial accuary
-    model.train()  # set the model into training mode
-    return all_acc / len(test_dataloader)
-
-def main():
-    best_acc = 0.0
-    for i in range(15):  # train for 15 epochs
-        # best accuary
-        loss = train()
-        acc = test()
-        print(f"epoch: {i}, loss: {loss}, accuary: {acc}")
-        if acc > best_acc:
-            torch.save(model, 'best.pth')  # save the best model
-            best_acc = acc
-
-if __name__ == '__main__':
-    main()
-```
-
-### Improved Code
-
-```python
-import torch
-import torchvision
-from torch.utils.data import DataLoader
-from torchvision import transforms
-from torchvision.models import resnet18
-from torch.optim.lr_scheduler import StepLR
-import time
-
-# Set random seed for reproducibility
-torch.manual_seed(42)
-
-# Define transforms and datasets
-train_transform = transforms.Compose([
-    transforms.RandomResizedCrop(224),
-    transforms.RandomHorizontalFlip(),
-    transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
-    transforms.RandomRotation(20),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
-
-test_transform = transforms.Compose([
-    transforms.Resize([224, 224]),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
-
-train_dataset = torchvision.datasets.Flowers102(root='./dataset', split='train', transform=train_transform, download=True)
-test_dataset = torchvision.datasets.Flowers102(root='./dataset', split='val', transform=test_transform, download=True)
-
-train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True, drop_last=True)
-test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
-
-# Initialize the model
-model = resnet18(pretrained=True)
-num_ftrs = model.fc.in_features
-model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
-model = model.to(device)
-
-# Define loss function, optimizer, and scheduler
-criterion = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)  # Using Adam optimizer
-scheduler = StepLR(optimizer, step_size=5, gamma=0.1)  # StepLR scheduler
-
-# Train the model
-def train():
-    model.train()
-    total_loss = 0.0
-    correct = 0
-    total = 0
-    for inputs, labels in train_dataloader:
-        optimizer.zero_grad()
-        inputs, labels = inputs.to(device), labels.to(device)  # Move data to device (GPU/CPU)
-        outputs = model(inputs)
-        loss = criterion(outputs, labels)
-        loss.backward()
-        optimizer.step()
-
-        total_loss += loss.item()
-        _, predicted = outputs.max(1)
-        total += labels.size(0)
-        correct += predicted.eq(labels).sum().item()
-
-    return total_loss / len(train_dataloader), correct / total
-
-# Test the model
-def test():
-    model.eval()
-    correct = 0
-    total = 0
-    with torch.no_grad():
-        for inputs, labels in test_dataloader:
-            inputs, labels = inputs.to(device), labels.to(device)  # Move data to device (GPU/CPU)
-            outputs = model(inputs)
-            _, predicted = outputs.max(1)
-            total += labels.size(0)
-            correct += predicted.eq(labels).sum().item()
-
-    return correct / total
-
-def main():
-    best_acc = 0.0
-    epochs_without_improvement = 0
-    max_epochs_without_improvement = 10
-    epoch = 0
-    accuracy_threshold = 0.75  # Step 1: Define the accuracy threshold
-
-    while True:
-        start_time = time.time()
-        train_loss, train_acc = train()
-        test_acc = test()
-        end_time = time.time()
-        epoch_duration = end_time - start_time
-        print(f"Epoch [{epoch+1}], Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f}, Test Acc: {test_acc:.4f}, Time: {epoch_duration:.2f}s")
-        scheduler.step()
-
-        if test_acc > best_acc:
-            torch.save(model.state_dict(), 'best_model.pth')
-            best_acc = test_acc
-            epochs_without_improvement = 0
-        else:
-            epochs_without_improvement += 1
-
-        # Check if accuracy exceeds the threshold
-        if test_acc >= accuracy_threshold:
-            print(f"Accuracy exceeds {accuracy_threshold * 100}%!")
-            break
-
-        if epochs_without_improvement >= max_epochs_without_improvement:
-            print("Early stopping due to no improvement in validation accuracy")
-            break
-
-        epoch += 1
-
-if __name__ == '__main__':
-    main()
-```
 
 ### Detailed Explanation of Steps and Improvements
 
@@ -281,13 +81,7 @@ if __name__ == '__main__':
 
 2. **Transformations and Data Augmentation**:
    - **Original Code**: Basic transformations without data augmentation.
-     ```python
-     train_transform = torchvision.transforms.Compose(
-         [torchvision.transforms.Resize([224, 224]),
-          torchvision.transforms.ToTensor()])
-     test_transform = torchvision.transforms.Compose(
-         [torchvision.transforms.Resize([224, 224]), torchvision.transforms.ToTensor()])
-     ```
+   
    - **Improved Code**: Added advanced data augmentation techniques for better generalization.
      ```python
      train_transform = transforms.Compose([
@@ -306,7 +100,150 @@ if __name__ == '__main__':
      ```
 
 3. **Batch Size Adjustment**:
-   - **Original Code**
+   - **Original Code**: Batch size set to 128.
+   - **Improved Code**: Reduced batch size to 64 to potentially improve model convergence and handle data augmentation.
+     ```python
+     train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True, drop_last=True)
+     test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
+     ```
+
+4. **Using Pre-trained Model with Fine-Tuning**:
+   - **Original Code**: Loaded the pre-trained ResNet-18 without specifying custom output classes.
+   - **Improved Code**: Modified the final layer to match the number of output classes (102).
+     ```python
+     model = resnet18(pretrained=True)
+     num_ftrs = model.fc.in_features
+     model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
+     ```
+
+5. **Optimizer and Learning Rate Scheduler**:
+   - **Original Code**: Used SGD optimizer without a learning rate scheduler.
+    
+   - **Improved Code**: Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
+     ```python
+     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+     scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
+     ```
+
+6. **Device Handling (GPU/CPU)**:
+   - **Original Code**: Did not specify device usage.
+   - **Improved Code**: Added device handling to utilize GPU if available.
+     ```python
+     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+     model = model.to(device)
+     ```
+
+7. **Training and Testing Functions**:
+   - **Original Code**: Basic implementation without device handling or accuracy calculation.
+     
+   - **Improved Code**: Enhanced with device handling, accuracy calculation, and logging.
+     ```python
+     def train():
+         model.train()
+         total_loss = 0.0
+         correct = 0
+         total = 0
+         for inputs, labels in train_dataloader:
+             optimizer.zero_grad()
+             inputs, labels = inputs.to(device), labels.to(device)  # Move data to device (GPU/CPU)
+             outputs = model(inputs)
+             loss = criterion(outputs, labels)
+             loss.backward()
+             optimizer.step()
+     
+             total_loss += loss.item()
+             _, predicted = outputs.max(1)
+             total += labels.size(0)
+             correct += predicted.eq(labels).sum().item()
+     
+         return total_loss / len(train_dataloader), correct / total
+     
+     def test():
+         model.eval()
+         correct = 0
+         total = 0
+         with torch.no_grad():
+             for inputs, labels in test_dataloader:
+                 inputs, labels = inputs.to(device), labels.to(device)  # Move data to device (GPU/CPU)
+                 outputs = model(inputs)
+                 _, predicted = outputs.max(1)
+                 total += labels.size(0)
+                 correct += predicted.eq(labels).sum().item()
+     
+         return correct / total
+     ```
+
+8. **Main Function with Early Stopping and Progress Logging**:
+   _ **Original Code**: Basic loop for 15 epochs without early stopping or progress logging.
+   _ **Improved Code**: Added early stopping, progress logging, and accuracy threshold check.
+     ```python
+     def main():
+         best_acc = 0.0
+         epochs_without_improvement = 0
+         max_epochs_without_improvement = 10
+         epoch = 0
+         accuracy_threshold = 0.75  # Step 1: Define the accuracy threshold
+     
+         while True:
+             start_time = time.time()
+             train_loss, train_acc = train()
+             test_acc = test()
+             end_time = time.time()
+             epoch_duration = end_time - start_time
+             print(f"Epoch [{epoch+1}], Train Loss: {train_loss:.4f}, Train Acc: {train_acc:.4f}, Test Acc: {test_acc:.4f}, Time: {epoch_duration:.2f}s")
+             scheduler.step()
+     
+             if test_acc > best_acc:
+                 torch.save(model.state_dict(), 'best_model.pth')
+                 best_acc = test_acc
+                 epochs_without_improvement = 0
+             else:
+                 epochs_without_improvement += 1
+     
+             # Check if accuracy exceeds the threshold
+             if test_acc >= accuracy_threshold:
+                 print(f"Accuracy exceeds {accuracy_threshold * 100}%!")
+                 break
+     
+             if epochs_without_improvement >= max_epochs_without_improvement:
+                 print("Early stopping due to no improvement in validation accuracy")
+                 break
+     
+             epoch += 1
+     
+     if __name__ == '__main__':
+         main()
+     ```
+
+### Summary of Improvements:
+1. **Setting a Random Seed**: Ensures reproducibility of results.
+2. **Data Augmentation**: Enhances training with diverse transformations, improving model generalization.
+3. **Batch Size Adjustment**: Optimizes training and handles data augmentation better.
+4. **Pre-trained Model Fine-Tuning**: Adjusts the final layer to match the specific number of classes (102).
+5. **Optimizer and Learning Rate Scheduler**: Uses Adam optimizer for better performance and introduces a learning rate scheduler.
+6. **Device Handling**: Utilizes GPU for faster computation if available.
+7. **Enhanced Training and Testing Functions**: Includes device handling, accuracy calculation, and logging.
+8. **Main Function Enhancements**: Introduces early stopping, progress logging, and an accuracy threshold check.
+
+These changes improve the training process, model performance, and provide better insights during model training and evaluation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
