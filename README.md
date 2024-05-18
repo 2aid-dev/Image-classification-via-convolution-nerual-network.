@@ -206,15 +206,13 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 
 ## Results:
-![image](https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/64970023-5e44-4fa4-83a9-dd3fe5b9261a)
-### After 15 times of training the model and testing it, we did not get the desired result. So let's increase the number of times we train and test
 
 ---
 
 
 ## Google Colab Project Links
 [Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
-
+<br />
 [After Improving Accuracy (Experiment 1)](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
 
 
