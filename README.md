@@ -3,7 +3,6 @@
 <details>
   <summary><b><font color="#0000FF">Explanation for Experiment-1</font></b></summary>
   
-  
   ## Experiment Objective:
   The primary aim of this experiment is to achieve superior accuracy in image classification tasks using Convolutional Neural Networks (CNNs). By following a meticulously structured workflow, we endeavor to optimize the model's performance and deliver robust classification capabilities.
   
@@ -54,10 +53,10 @@ After downloading and installing the trial environment requirements.
 
 <img src="https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/2c21cbdf-c608-4fa2-b09d-275ec5d4caaa" alt="drawing" width="100%" height="600"/>
 
------ 
+---
+# So let's do the homework ().
 
-
-## So let's do the homework ().
+<sub><sup>combining the two tags</sup></sub>
 
 <span style="font-size:0.5em;">
 
