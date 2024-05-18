@@ -68,14 +68,12 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 ### Detailed Explanation of Steps and Improvements
 
 ### **Setting Random Seed**:
-   
-     ```python
-     torch.manual_seed(42)
-     ```
+   ```python
+   torch.manual_seed(42)
+   ```
 
 ### **Transformations and Data Augmentation**:
 - Added advanced data augmentation techniques for better generalization.
-
      ```python
      train_transform = transforms.Compose([
          transforms.RandomResizedCrop(224),
