@@ -209,6 +209,7 @@ The model training stops early if the validation accuracy does not improve for a
 
 The best model is saved as best_model.pth when the validation accuracy improves.
 
+---
 
 ## Google Colab Project Links
 [Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
