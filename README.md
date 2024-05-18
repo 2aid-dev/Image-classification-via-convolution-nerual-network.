@@ -98,12 +98,8 @@ Certainly! Let's go through the entire new code and compare it with the original
      ```
 
 3. **Batch Size Adjustment**:
-- In Original Code Batch size is set to 128.
-- Reduced batch size to 64 to improve model convergence and handle data augmentation.
-
-
-   - 
-   - 
+  - In Original Code Batch size is set to 128.
+  - Reduced batch size to 64 to improve model convergence and handle data augmentation.
 
      ```python
      train_dataloader = DataLoader(train_dataset, batch_size=64, shuffle=True, drop_last=True)
