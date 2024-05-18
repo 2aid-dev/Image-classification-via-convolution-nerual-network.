@@ -153,10 +153,6 @@ writer.close()
 - Experiment and adjust hyperparameters (like learning rate, batch size).
 - Evaluate the impact of adjustments on the model and choose the most suitable ones.
 
-This way, you will be able to systematically and cumulatively improve your model's performance based on continuous monitoring and analysis.
-
-
-
 
 ---
 
