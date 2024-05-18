@@ -58,17 +58,14 @@ After downloading and installing the trial environment requirements.
 
 <sub><sup>combining the two tags</sup></sub>
 
+
+<sub>combining the two tags</sub>
+
 <small> 
-smalllllllll
-</small>
-
-<span style="font-size:0.5em;">
-
 You need to improve the accuary of the Image Classification task to more than 75% just by modifying the code instead of rewriting the code all. There are two things you need to submit: 1 Your code modified based on the code we provided. 2 Screenshot of the experimental results and the accuary must be more than 75%.
 
 Hints: You can experiment with different learning rates, use the weight decay, use data augmentation and use the scheduler to change the learning rates during training the model.
-
-</span>
+</small>
 
 
 
