@@ -63,8 +63,6 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 
 ## Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
-
-
 ### Detailed Explanation of Steps and Improvements
 
 ### **Setting Random Seed**:
@@ -99,8 +97,8 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
      ```
 
-4. **Using Pre-trained Model with Fine-Tuning**:
-   - Modified the final layer to match the number of output classes (102).
+### **Using Pre-trained Model with Fine-Tuning**:
+- Modified the final layer to match the number of output classes (102).
 
      ```python
      model = resnet18(pretrained=True)
@@ -202,8 +200,8 @@ Hints: You can experiment with different learning rates, use the weight decay, u
         if __name__ == '__main__':
             main()
      ```
-  ---
-  
+
+---
 
 
 ## Results:
