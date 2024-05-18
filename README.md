@@ -1,6 +1,4 @@
-# Image-classification-via-convolution-nerual-network.
-
-# Improving Accuracy in Image Classification Project [Experiment 1](https://github.com/WhynotChen0105/Experiment-1/tree/main)
+# Improving Accuracy in [Image-classification-via-convolution-nerual-network. "Experiment 1"](https://github.com/WhynotChen0105/Experiment-1/tree/main)
 
 ## Project Description
 This project aims to improve image classification accuracy using Convolutional Neural Networks. After conducting the experiment and obtaining the results, improvements will be applied to meet the ***homework*** assignment requirements.
