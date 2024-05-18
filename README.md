@@ -206,6 +206,15 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 
 ## Results:
+- The model training stops early if the validation accuracy does not improve for a specified number of epochs.
+- The best model is saved as best_model.pth when the validation accuracy improves.
+
+---
+
+
+## Contributing
+- Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
+
 
 ---
 
