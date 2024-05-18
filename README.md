@@ -72,6 +72,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ### **Transformations and Data Augmentation**:
 - Added advanced data augmentation techniques for better generalization.
+  
      ```python
      train_transform = transforms.Compose([
          transforms.RandomResizedCrop(224),
