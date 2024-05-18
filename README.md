@@ -9,7 +9,7 @@ The model will:
 - The model is trained and tested over multiple epochs, and the best-performing model is saved based on accuracy.
 --- 
 
-<img src="https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/2c21cbdf-c608-4fa2-b09d-275ec5d4caaa" alt="drawing" width="200"/>
+<img src="https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/2c21cbdf-c608-4fa2-b09d-275ec5d4caaa" alt="drawing" width="100%" height="50%"/>
 
 
 ## Here are ways to optimize the following experience: 👇🏼
