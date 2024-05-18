@@ -207,8 +207,10 @@ The image shows results before the Improve
 
 ## Results:
 The model training stops early if the validation accuracy does not improve for a specified number of epochs.
-
 The best model is saved as best_model.pth when the validation accuracy improves.
+
+![Uploading image.png…]()
+
 
 ---
 
