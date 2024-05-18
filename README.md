@@ -217,6 +217,8 @@ The image shows results after the Improve
 ---
 
 I am attaching both the old and new version of the code:
+<p><sub> AI_Class_After_Improving_Accuracy_(Experiment_1).ipynb <a href="AI_Class_After_Improving_Accuracy_(Experiment_1).ipynb">هنا</a>.</sub></p>
+
 [AI_Class_After_Improving_Accuracy_(Experiment_1)](src/AI_Class_After_Improving_Accuracy_(Experiment_1))
 
 ## Google Colab Project Links
