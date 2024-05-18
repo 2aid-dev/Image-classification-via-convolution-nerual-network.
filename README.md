@@ -67,11 +67,6 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ### Detailed Explanation of Steps and Improvements
 
-
-Certainly! Let's go through the entire new code and compare it with the original code, explaining the improvements and steps taken.
-
-### Detailed Explanation of Steps and Improvements
-
 1. **Setting Random Seed**:
    
      ```python
@@ -211,21 +206,6 @@ Certainly! Let's go through the entire new code and compare it with the original
      ```
   ---
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Results:
