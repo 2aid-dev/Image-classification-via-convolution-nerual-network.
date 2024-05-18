@@ -65,17 +65,17 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 ## Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
 
 
-
 ### Detailed Explanation of Steps and Improvements
 
 1. **Setting Random Seed**:
     **Original Code**: Did not set a random seed for reproducibility.
+
     **Improved Code**:
      ```python
      torch.manual_seed(42)
      ```
 
-2. **Transformations and Data Augmentation**:
+3. **Transformations and Data Augmentation**:
    - **Original Code**: Basic transformations without data augmentation.
    - **Improved Code**: Added advanced data augmentation techniques for better generalization.
      ```python
@@ -94,7 +94,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      ])
      ```
 
-3. **Batch Size Adjustment**:
+4. **Batch Size Adjustment**:
    - **Original Code**: Batch size set to 128.
    - **Improved Code**: Reduced batch size to 64 to potentially improve model convergence and handle data augmentation.
      ```python
@@ -102,7 +102,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle=False, drop_last=False)
      ```
 
-4. **Using Pre-trained Model with Fine-Tuning**:
+5. **Using Pre-trained Model with Fine-Tuning**:
    - **Original Code**: Loaded the pre-trained ResNet-18 without specifying custom output classes.
    - **Improved Code**: Modified the final layer to match the number of output classes (102).
      ```python
@@ -111,7 +111,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      model.fc = torch.nn.Linear(num_ftrs, 102)  # Change the last layer for 102 classes
      ```
 
-5. **Optimizer and Learning Rate Scheduler**:
+6. **Optimizer and Learning Rate Scheduler**:
    - **Original Code**: Used SGD optimizer without a learning rate scheduler.
    - **Improved Code**: Switched to Adam optimizer for potentially better performance and added a learning rate scheduler.
      ```python
@@ -119,7 +119,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      scheduler = StepLR(optimizer, step_size=5, gamma=0.1)
      ```
 
-6. **Device Handling (GPU/CPU)**:
+7. **Device Handling (GPU/CPU)**:
    - **Original Code**: Did not specify device usage.
    - **Improved Code**: Added device handling to utilize GPU if available.
      ```python
@@ -127,7 +127,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
      model = model.to(device)
      ```
 
-7. **Training and Testing Functions**:
+8. **Training and Testing Functions**:
    - **Original Code**: Basic implementation without device handling or accuracy calculation.
    - **Improved Code**: Enhanced with device handling, accuracy calculation, and logging.
      ```python
@@ -166,7 +166,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
          return correct / total
      ```
 
-8. **Main Function with Early Stopping and Progress Logging**:
+9. **Main Function with Early Stopping and Progress Logging**:
    - **Original Code**: Basic loop for 15 epochs without early stopping or progress logging.
    - **Improved Code**: Added early stopping, progress logging, and accuracy threshold check.
      ```python
