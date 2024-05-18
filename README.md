@@ -62,7 +62,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 </sub>
 
 
-# Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
+## Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
 
 ### 1. **Improving Training Data**
 
