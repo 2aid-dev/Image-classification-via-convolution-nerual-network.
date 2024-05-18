@@ -3,7 +3,7 @@
 
 
 <details>
-  <summary> <h1 style="color: blue"> Explanation for Experiment-1 </h1> </summary>
+  <summary> <h1 style="color: blue">Explanation for Experiment-1</h1> </summary>
   
   ## Experiment Objective:
   The primary aim of this experiment is to achieve superior accuracy in image classification tasks using Convolutional Neural Networks (CNNs). By following a meticulously structured workflow, we endeavor to optimize the model's performance and deliver robust classification capabilities.
