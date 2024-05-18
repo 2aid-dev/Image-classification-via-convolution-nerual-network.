@@ -205,14 +205,14 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 ---
 
 
-## Results:
+### Results:
 - The model training stops early if the validation accuracy does not improve for a specified number of epochs.
 - The best model is saved as best_model.pth when the validation accuracy improves.
 
 ---
 
 
-## Contributing
+### Contributing
 - Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
 
@@ -221,6 +221,7 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ## Google Colab Project Links
 [Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
+
 [After Improving Accuracy (Experiment 1)](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
 
 
