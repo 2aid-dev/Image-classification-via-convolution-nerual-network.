@@ -64,111 +64,6 @@ Hints: You can experiment with different learning rates, use the weight decay, u
 
 ## Improving the performance of your model can be achieved through a variety of strategies. Here are some ways to enhance your model:
 
-### 1. **Improving Training Data**
-
-#### Data Augmentation
-Using data augmentation techniques can help the model generalize better.
-
-```python
-train_transform = torchvision.transforms.Compose([
-    torchvision.transforms.Resize([224, 224]),
-    torchvision.transforms.RandomHorizontalFlip(),
-    torchvision.transforms.RandomRotation(10),
-    torchvision.transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.2),
-    torchvision.transforms.ToTensor()
-])
-```
-
-#### Improving Test Data Transformations
-Apply appropriate transformations to the test data, but avoid excessive augmentation here.
-
-```python
-test_transform = torchvision.transforms.Compose([
-    torchvision.transforms.Resize([224, 224]),
-    torchvision.transforms.ToTensor()
-])
-```
-
-### 2. **Improving the Model Architecture**
-
-#### Using a More Complex Model
-Using a more complex or modified model can help improve performance. You can try models like ResNet50 or even use transfer learning techniques.
-
-```python
-model = torchvision.models.resnet50(weights=torchvision.models.ResNet50_Weights.DEFAULT)
-```
-
-### 3. **Improving the Loss Function and Optimizer**
-
-#### Enhancing the Loss Function
-If the current loss function is insufficient, you can try other loss functions or a combination of them.
-
-#### Enhancing the Optimizer
-Experiment with other optimizers such as Adam, or use optimization techniques like learning rate scheduling.
-
-```python
-optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
-scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
-```
-
-### 4. **Using Training Optimization Techniques**
-
-#### Using Pretraining
-Using pretrained models and fine-tuning them can significantly improve model performance.
-
-```python
-model = torchvision.models.resnet18(weights=torchvision.models.ResNet18_Weights.DEFAULT)
-# Fine-tune the last layer
-num_features = model.fc.in_features
-model.fc = torch.nn.Linear(num_features, 102)  # Assuming 102 classes in the Flowers102 dataset
-```
-
-#### Multi-GPU Training
-Use multi-GPU training techniques to distribute the workload across several GPUs.
-
-```python
-model = torch.nn.DataParallel(model)
-```
-
-### 5. **Monitoring Performance and Analysis**
-
-#### Monitoring Performance
-Regularly monitor accuracy and loss during training and testing using tools like TensorBoard.
-
-```python
-from torch.utils.tensorboard import SummaryWriter
-
-writer = SummaryWriter()
-
-# Inside the training loop
-writer.add_scalar('Loss/train', loss.item(), epoch * len(train_dataloader) + i)
-# Inside the testing loop
-writer.add_scalar('Accuracy/test', accuracy, epoch)
-
-# At the end of training
-writer.close()
-```
-
-### 6. **Experimentation and Adjustment**
-   - Experiment and adjust hyperparameters (like learning rate, batch size).
-   - Evaluate the impact of adjustments on the model and choose the most suitable ones.
-
----
-
-
-## Results:
-![image](https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/64970023-5e44-4fa4-83a9-dd3fe5b9261a)
-### After 15 times of training the model and testing it, we did not get the desired result. So let's increase the number of times we train and test
-
----
-
-
-## Google Colab Project Links
-[Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
-
-[After Improving Accuracy (Experiment 1)](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
-
-
 
 
 ### Detailed Explanation of Steps and Improvements
@@ -324,3 +219,25 @@ writer.close()
 8. **Main Function Enhancements**: Introduces early stopping, progress logging, and an accuracy threshold check.
 
 These changes improve the training process, model performance, and provide better insights during model training and evaluation.
+
+
+
+
+
+
+
+
+
+## Results:
+![image](https://github.com/2aid-dev/Image-classification-via-convolution-nerual-network./assets/42585484/64970023-5e44-4fa4-83a9-dd3fe5b9261a)
+### After 15 times of training the model and testing it, we did not get the desired result. So let's increase the number of times we train and test
+
+---
+
+
+## Google Colab Project Links
+[Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
+
+[After Improving Accuracy (Experiment 1)](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
+
+
