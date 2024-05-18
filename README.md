@@ -56,9 +56,7 @@ After downloading and installing the trial environment requirements.
 ---
 # Let's Improve Image Classification Accuracy: Time to Tackle the Homework!.
 <sub>
-  You need to improve the accuary of the Image Classification task to more than 75% just by modifying the code instead of rewriting the code all. 
-  <br />
-  There are two things you need to submit: 1 Your code modified based on the code we provided. 2 Screenshot of the experimental results and the accuary must be more than 75%.
+  You need to improve the accuary of the Image Classification task to more than 75% just by modifying the code instead of rewriting the code all. There are two things you need to submit: 1 Your code modified based on the code we provided. 2 Screenshot of the experimental results and the accuary must be more than 75%.
   <br />
   Hints: You can experiment with different learning rates, use the weight decay, use data augmentation and use the scheduler to change the learning rates during training the model.
 </sub>
