@@ -157,7 +157,7 @@ writer.close()
 ---
 
 
+## Google Colab Project Links
+[Original Version (Experiment 1)](https://colab.research.google.com/drive/1NiNzSLBAbhRZ-5vu2cbATx3Pj3lDv_aw?usp=sharing)
 
-## Google Colab Project
-[Link to Google Colab Project](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
-
+[After Improving Accuracy (Experiment 1)](https://colab.research.google.com/drive/1yKb2VxO1c_Pdl1hLQ1XgBRHuZfinNaMu?usp=sharing)
